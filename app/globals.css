@@ -1,0 +1,262 @@
+/* Clash Display (--font-hero) + Satoshi (--font-display / --font-body) sont
+   chargées via <link rel="stylesheet"> dans app/layout.tsx, pas en @import
+   ici : un @import CSS retarde le chargement de la police derrière un aller-
+   retour réseau supplémentaire (la feuille de style doit d'abord être
+   téléchargée et parsée avant que le navigateur découvre l'@import). */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-base: #070b18;
+  --color-surface: #0e1424;
+  --color-brand: #2b7cf6;
+  --color-brand-light: #5ea0ff;
+  --color-glow: #4da3ff;
+  --color-silver: #c8d2e0;
+  --font-hero: "Clash Display", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+
+  /* Système de texte centralisé — contraste AA garanti sur tout fond sombre
+     du site (--color-base / --color-surface). Tailwind : text-white (primary),
+     text-silver (secondary), text-muted (muted), text-disabled (disabled). */
+  --text-primary: #ffffff;
+  --text-secondary: #c8d2e0;
+  --text-muted: #9aa6b8;
+  --text-disabled: #6b7689;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-base);
+    color: var(--color-silver);
+    font-feature-settings: "ss01", "cv01";
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Décalage d'ancre sous le header fixe */
+  [id] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  ::selection {
+    background-color: rgba(43, 124, 246, 0.35);
+    color: #ffffff;
+  }
+
+  /* Focus visible cohérent et accessible */
+  :focus-visible {
+    outline: 2px solid var(--color-brand-light);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+@layer utilities {
+  /* Grain subtil pour casser les aplats (déposé via un calque positionné). */
+  .aura-grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 170px 170px;
+  }
+  .aura-drift {
+    animation: aura-drift 22s ease-in-out infinite;
+    will-change: transform;
+  }
+  /* Shimmer lumineux qui traverse un élément bleu clé. */
+  .aura-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .aura-shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      110deg,
+      transparent 35%,
+      rgba(94, 160, 255, 0.35) 50%,
+      transparent 65%
+    );
+    transform: translateX(-120%);
+    animation: aura-sheen 6s ease-in-out infinite;
+  }
+  /* Texte qui se révèle par masque (clip-path), reveal affirmé. */
+  .text-glow-soft {
+    text-shadow: 0 2px 30px rgba(7, 11, 24, 0.6), 0 0 1px rgba(7, 11, 24, 0.4);
+  }
+}
+
+@keyframes aura-drift {
+  0% {
+    transform: translate3d(-3%, -2%, 0) scale(1.06);
+  }
+  50% {
+    transform: translate3d(3%, 3%, 0) scale(1.14);
+  }
+  100% {
+    transform: translate3d(-3%, -2%, 0) scale(1.06);
+  }
+}
+
+@keyframes aura-sheen {
+  0%,
+  60% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+/* Respiration lente du noyau du « cœur IA » (préloader uniquement). */
+@keyframes core-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.045);
+  }
+}
+
+/* Preloader : barre de progression indéterminée (le cœur lumineux utilise déjà core-pulse). */
+@keyframes preloader-bar {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+/* Globe « réseau de données » (page Assistants IA) : rotation continue,
+   suspendue hors viewport via --globe-play (IntersectionObserver). */
+.globe-spin {
+  animation: globe-spin 14s linear infinite;
+  animation-play-state: var(--globe-play, running);
+}
+@keyframes globe-spin {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+.globe-dot-pulse {
+  animation: globe-dot-pulse 2.4s ease-in-out infinite;
+}
+@keyframes globe-dot-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.8);
+  }
+}
+
+/* Curseur custom (desktop only) : natif masqué, point + anneau "trailing". */
+html.cursor-custom,
+html.cursor-custom * {
+  cursor: none !important;
+}
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #2b7cf6;
+  box-shadow: 0 0 12px 2px rgba(43, 124, 246, 0.7);
+  transition: opacity 0.2s ease;
+  will-change: transform;
+}
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(94, 160, 255, 0.55);
+  box-shadow: 0 0 18px 0 rgba(43, 124, 246, 0.25);
+  transition: width 0.25s ease, height 0.25s ease, opacity 0.2s ease, border-color 0.25s ease,
+    background-color 0.25s ease;
+  will-change: transform;
+}
+.cursor-ring--hover {
+  width: 54px;
+  height: 54px;
+  border-color: rgba(94, 160, 255, 0.85);
+  background: rgba(43, 124, 246, 0.08);
+}
+
+/* Scrollbar premium */
+::-webkit-scrollbar {
+  width: 11px;
+}
+::-webkit-scrollbar-track {
+  background: #070b18;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#1e5fd8, #2b7cf6);
+  border: 3px solid #070b18;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(#2b7cf6, #5ea0ff);
+}
+
+/* Lenis (scroll fluide) — styles recommandés */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Respect strict de prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
