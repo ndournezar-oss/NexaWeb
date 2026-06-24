@@ -203,6 +203,10 @@ export const assistantsIA = {
       "Imaginez une agence de location qui reçoit chaque jour des dizaines d'appels de qualification répétitifs. Un assistant IA filtre ces demandes — budget, dates, type de bien — répond aux questions courantes, et ne bascule sur WhatsApp que les clients réellement décidés. Résultat : moins de temps perdu, plus de conversions, une disponibilité totale.",
   },
   demoOverline: "Essayez-le maintenant",
+  live: {
+    eyebrow: "ASSISTANT NEXAWEB — IA EN DIRECT",
+    line: "Posez-lui n'importe quelle question sur votre projet.",
+  },
   cta: {
     title: "Donnons une voix à votre site.",
     subtitle: "On vous montre, sur votre cas, ce qu'un assistant IA peut faire. Premier échange gratuit.",

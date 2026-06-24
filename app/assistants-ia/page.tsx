@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Bot, CalendarClock, Clock, MessageSquare, Sparkles, Users } from "lucide-react";
-import { AiDemo } from "@/components/ai/AiDemo";
+import { ArrowRight, Bot, CalendarClock, Clock, MessageSquare, Users } from "lucide-react";
+import { AssistantChat } from "@/components/ai/AssistantChat";
 import { DataGlobe } from "@/components/ai/DataGlobe";
 import { Reveal } from "@/components/Reveal";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
@@ -30,47 +30,35 @@ const USE_CASE_ICONS = [Users, Clock, MessageSquare, CalendarClock];
 export default function AssistantsIaPage() {
   return (
     <>
-      {/* Héros + cœur IA + démo — bloc compact, dense, sans grand vide */}
-      <section className="relative overflow-hidden bg-base pt-32 pb-16 sm:pt-40 sm:pb-20">
+      {/* Expérience IA en vedette — globe + chat dominent l'écran, sans pavé de texte */}
+      <section className="relative overflow-hidden bg-base pt-28 pb-14 sm:pt-32">
         <div className="pointer-events-none absolute -top-24 right-0 h-[36rem] w-[36rem] rounded-full bg-brand/15 blur-[130px]" />
         <div className="pointer-events-none absolute inset-0 text-brand-light/60">
           <ZelligePattern opacity={0.05} scale={110} className="h-full w-full" />
         </div>
         <div className="relative mx-auto max-w-container px-5 sm:px-8">
-          <Reveal>
-            <p className="inline-flex items-center gap-2 font-display text-sm font-semibold uppercase tracking-[0.25em] text-brand-light">
-              <Sparkles className="size-4" aria-hidden="true" />
-              {assistantsIA.kicker}
-            </p>
-          </Reveal>
-          <Reveal delay={0.05}>
-            <h1 className="mt-4 max-w-4xl font-display text-4xl font-semibold leading-[1.06] tracking-tight text-white sm:text-6xl">
-              {assistantsIA.h1}
-            </h1>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-silver">{assistantsIA.intro}</p>
-          </Reveal>
-          <Reveal delay={0.15}>
-            <div className="mt-6 flex flex-wrap items-center gap-4">
-              <a href="#demo-ia" className={btn.primary}>
-                {assistantsIA.ctaPrimary}
-                <ArrowRight className="size-[1.1em]" aria-hidden="true" />
-              </a>
-              <WhatsAppButton variant="secondary" label={assistantsIA.ctaSecondary} />
-            </div>
-          </Reveal>
-
-          {/* Globe réseau — visuel abstrait, compact, qui dit « intelligence connectée » avant la démo */}
-          <Reveal delay={0.2} className="mt-6 sm:mt-8">
-            <DataGlobe />
-          </Reveal>
-
-          {/* Démo live — la pièce dominante, juste sous le cœur IA */}
-          <div id="demo-ia" className="mt-5 sm:mt-6">
-            <Reveal delay={0.25}>
-              <AiDemo />
+          <div className="grid items-center gap-8 lg:min-h-[85vh] lg:grid-cols-2">
+            {/* Colonne gauche — globe + accroche courte (mobile : globe compact au-dessus) */}
+            <Reveal className="flex flex-col items-center text-center lg:items-start lg:text-left">
+              <div className="flex h-[180px] w-full items-center justify-center lg:h-[320px]">
+                <div className="scale-[1.7] lg:scale-[2.4]">
+                  <DataGlobe />
+                </div>
+              </div>
+              <p className="mt-2 font-display text-xs font-semibold uppercase tracking-[0.25em] text-brand-light sm:text-sm">
+                {assistantsIA.live.eyebrow}
+              </p>
+              <p className="mt-2 max-w-sm font-display text-base leading-snug text-silver sm:text-lg">
+                {assistantsIA.live.line}
+              </p>
             </Reveal>
+
+            {/* Colonne droite — la fenêtre de chat, dominante */}
+            <div id="demo-ia" className="w-full">
+              <Reveal delay={0.1} className="w-full">
+                <AssistantChat />
+              </Reveal>
+            </div>
           </div>
         </div>
       </section>
