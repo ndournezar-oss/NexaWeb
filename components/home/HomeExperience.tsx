@@ -3,6 +3,7 @@ import { Manifesto } from "@/components/home/Manifesto";
 import { Services } from "@/components/home/Services";
 import { AiPitch } from "@/components/home/AiPitch";
 import { Approach } from "@/components/home/Approach";
+import { ScrollShowcaseSection } from "@/components/home/ScrollShowcaseSection";
 import { StatsGrid } from "@/components/home/StatsGrid";
 import { Faq } from "@/components/home/Faq";
 import { Conversion } from "@/components/home/Conversion";
@@ -25,6 +26,7 @@ export function HomeExperience({ media }: { media: MediaFlags }) {
       <Services media={media} />
       <AiPitch />
       <Approach />
+      <ScrollShowcaseSection />
       <StatsGrid />
       <Faq />
       <Conversion />
