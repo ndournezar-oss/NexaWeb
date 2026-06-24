@@ -95,7 +95,6 @@ export function organizationJsonLd() {
       { "@type": "City", name: "Casablanca" },
     ],
     knowsLanguage: ["fr", "ar"],
-    sameAs: [siteConfig.social.instagram, siteConfig.social.linkedin, siteConfig.social.behance],
     slogan: siteConfig.tagline,
     hasOfferCatalog: {
       "@type": "OfferCatalog",

@@ -38,12 +38,6 @@ export const siteConfig = {
     e164: "212659529930",
   },
   priceRange: "$$$",
-  // Réseaux sociaux — à compléter (placeholders).
-  social: {
-    instagram: "https://instagram.com/nexaweb.ma",
-    linkedin: "https://www.linkedin.com/company/nexaweb-ma",
-    behance: "https://www.behance.net/nexaweb",
-  },
 } as const;
 
 export const nav = [
