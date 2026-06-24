@@ -461,26 +461,51 @@ function renderInline(text: string): React.ReactNode[] {
 function RichText({ text }: { text: string }) {
   const lines = text.split("\n");
   const blocks: React.ReactNode[] = [];
-  let bullets: string[] = [];
+  let listType: "ul" | "ol" | null = null;
+  let items: string[] = [];
   let key = 0;
 
   const flush = () => {
-    if (bullets.length === 0) return;
-    const items = bullets;
-    blocks.push(
-      <ul key={`ul-${key++}`} className="my-1 list-disc space-y-0.5 pl-4 marker:text-brand-light">
-        {items.map((it, i) => (
-          <li key={i}>{renderInline(it)}</li>
-        ))}
-      </ul>
-    );
-    bullets = [];
+    if (!listType || items.length === 0) {
+      listType = null;
+      items = [];
+      return;
+    }
+    const current = items;
+    if (listType === "ol") {
+      blocks.push(
+        <ol key={`ol-${key++}`} className="my-1 list-decimal space-y-0.5 pl-5 marker:text-brand-light">
+          {current.map((it, i) => (
+            <li key={i}>{renderInline(it)}</li>
+          ))}
+        </ol>
+      );
+    } else {
+      blocks.push(
+        <ul key={`ul-${key++}`} className="my-1 list-disc space-y-0.5 pl-4 marker:text-brand-light">
+          {current.map((it, i) => (
+            <li key={i}>{renderInline(it)}</li>
+          ))}
+        </ul>
+      );
+    }
+    listType = null;
+    items = [];
   };
 
   for (const line of lines) {
-    const bullet = /^\s*[-*]\s+(.*)$/.exec(line);
+    const numbered = /^\s*\d+[.)]\s+(.*)$/.exec(line);
+    if (numbered) {
+      if (listType && listType !== "ol") flush();
+      listType = "ol";
+      items.push(numbered[1]);
+      continue;
+    }
+    const bullet = /^\s*[-*•]\s+(.*)$/.exec(line);
     if (bullet) {
-      bullets.push(bullet[1]);
+      if (listType && listType !== "ul") flush();
+      listType = "ul";
+      items.push(bullet[1]);
       continue;
     }
     flush();
