@@ -11,6 +11,7 @@ import {
   useTransform,
 } from "framer-motion";
 import { whatsappLink } from "@/lib/site";
+import { useIsMobile } from "@/lib/useIsMobile";
 
 /* ------------------------------------------------------------------ *
  * 6 maquettes de sites — intégrées TELLES QUELLES (contenu interne non
@@ -253,28 +254,34 @@ function indexFromProgress(p: number): number {
 export function ScrollShowcase() {
   const containerRef = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
+  const isMobile = useIsMobile();
   const { scrollYProgress } = useScroll({ target: containerRef });
   const [active, setActive] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
+  // Animation 3D pilotée par le scroll : desktop uniquement. Sur mobile (ou
+  // reduced-motion), le device est statique et les maquettes défilent en
+  // autoplay — pas de rotateX/scale liés au scroll (cause de jank tactile).
+  const scrollDriven = !reduced && !isMobile;
 
   useMotionValueEvent(scrollYProgress, "change", (v) => {
+    if (!scrollDriven) return;
     const idx = indexFromProgress(v);
     setActive((prev) => (prev === idx ? prev : idx));
   });
 
+  // Autoplay des maquettes sur mobile (device statique → elles défilent seules).
+  useEffect(() => {
+    if (scrollDriven || reduced) return undefined;
+    const id = setInterval(() => setActive((i) => (i + 1) % MOCKUPS.length), 2000);
+    return () => clearInterval(id);
+  }, [scrollDriven, reduced]);
+
   const rotate = useTransform(scrollYProgress, [0, 1], [20, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], isMobile ? [0.7, 0.9] : [1.05, 1]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1.05, 1]);
   const translate = useTransform(scrollYProgress, [0, 1], [0, -100]);
 
   const Active = MOCKUPS[active];
-  const shownIndex = reduced ? 0 : active;
+  const shownIndex = active;
 
   return (
     <section
@@ -284,7 +291,7 @@ export function ScrollShowcase() {
       <div className="relative w-full py-10 md:py-40" style={{ perspective: "1000px" }}>
         {/* Titre */}
         <motion.div
-          style={reduced ? undefined : { translateY: translate }}
+          style={scrollDriven ? { translateY: translate } : undefined}
           className="mx-auto mb-8 max-w-5xl text-center"
         >
           <h2 className="font-hero text-4xl font-bold leading-tight text-white md:text-6xl">
@@ -295,18 +302,26 @@ export function ScrollShowcase() {
           </p>
         </motion.div>
 
-        {/* Device */}
+        {/* Device — 3D au scroll sur desktop ; statique + fade-in sur mobile/reduced */}
         <motion.div
           style={
-            reduced
-              ? { boxShadow: "0 0 60px rgba(43,124,246,0.15), 0 9px 20px #0000004a" }
-              : {
+            scrollDriven
+              ? {
                   rotateX: rotate,
                   scale,
                   boxShadow:
                     "0 0 60px rgba(43,124,246,0.15), 0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px #00000042, 0 84px 50px #00000026, 0 149px 60px #0000000a, 0 233px 65px #00000003",
                 }
+              : { boxShadow: "0 0 60px rgba(43,124,246,0.15), 0 9px 20px #0000004a" }
           }
+          {...(scrollDriven || reduced
+            ? {}
+            : {
+                initial: { opacity: 0 },
+                whileInView: { opacity: 1 },
+                viewport: { once: true, margin: "0px 0px -10% 0px" },
+                transition: { duration: 0.5 },
+              })}
           className="mx-auto -mt-12 h-[26rem] w-full max-w-5xl rounded-[30px] border-4 border-[#1E3A6E] bg-[#0B1120] p-2 shadow-2xl md:h-[40rem] md:p-6"
         >
           <div className="relative h-full w-full overflow-hidden rounded-2xl bg-gray-100 dark:bg-zinc-900 md:rounded-2xl">

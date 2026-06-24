@@ -97,6 +97,7 @@ export function ContactHero({ blueTubes }: { blueTubes: boolean }) {
             src="/media/blue-tubes.png"
             alt=""
             fill
+            sizes="(max-width: 768px) 80vw, 40vw"
             className="object-contain"
             style={{ objectPosition: "bottom left", transform: "scaleX(-1)" }}
             aria-hidden="true"
@@ -119,6 +120,7 @@ export function ContactHero({ blueTubes }: { blueTubes: boolean }) {
             src="/media/blue-tubes.png"
             alt=""
             fill
+            sizes="(max-width: 768px) 80vw, 40vw"
             className="object-contain"
             style={{ objectPosition: "bottom right" }}
             aria-hidden="true"

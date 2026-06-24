@@ -15,8 +15,11 @@ import { siteConfig } from "@/lib/site";
 // via <link rel="stylesheet"> ci-dessous (préchargement réel, pas d'@import
 // CSS qui retarderait la police), exposées par --font-hero et --font-display
 // / --font-body (voir tailwind.config.ts).
+// Clash Display : seuls 300 (héros « light ») et 700 (bold) sont utilisés
+// (font-hero) — les poids 400/500/600 inutiles sont retirés pour alléger le
+// chargement réseau. Satoshi (display/body) garde 300/400/500/700.
 const FONTSHARE_HREF =
-  "https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,600,700&f[]=satoshi@300,400,500,700&display=swap";
+  "https://api.fontshare.com/v2/css?f[]=clash-display@300,700&f[]=satoshi@300,400,500,700&display=swap";
 
 const arabic = IBM_Plex_Sans_Arabic({
   subsets: ["arabic"],

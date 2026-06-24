@@ -88,6 +88,7 @@ function BentoCell({
             src={MEDIA_PATHS.heroBg}
             alt=""
             fill
+            sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover"
             style={{ objectPosition: "center 30%" }}
           />

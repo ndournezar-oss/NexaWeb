@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { home } from "@/lib/content";
@@ -26,6 +27,16 @@ const ShaderAnimation = dynamic(
 export function Hero({ media }: { media: MediaFlags }) {
   const reduced = useReducedMotion();
 
+  // Le shader WebGL (Three.js) ne se monte QUE sur desktop confirmé : sur
+  // mobile le chunk three.js n'est même pas téléchargé (gain 4G majeur) et le
+  // fond reste un navy + 2 glows CSS statiques. Décision au montage (SSR-safe :
+  // false au 1er paint, donc pas de mismatch d'hydratation), sans listener
+  // resize pour ne jamais monter/démonter le contexte WebGL en cours de route.
+  const [enableShader, setEnableShader] = useState(false);
+  useEffect(() => {
+    setEnableShader(!reduced && window.innerWidth >= 768);
+  }, [reduced]);
+
   const titleVariants = {
     hidden: reduced ? { opacity: 0 } : { opacity: 0, y: 40 },
     show: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.3 } },
@@ -48,9 +59,10 @@ export function Hero({ media }: { media: MediaFlags }) {
         <div className="pointer-events-none absolute -right-32 top-1/4 h-[36rem] w-[36rem] rounded-full bg-[rgba(43,124,246,0.25)] blur-[120px]" />
         <div className="pointer-events-none absolute -right-10 bottom-0 h-[28rem] w-[28rem] rounded-full bg-[rgba(43,124,246,0.25)] blur-[100px]" />
 
-        {/* Shader WebGL — chargé côté client uniquement, pausé hors viewport.
-            Skippé si prefers-reduced-motion pour éviter les animations de fond. */}
-        {!reduced && <ShaderAnimation />}
+        {/* Shader WebGL — desktop uniquement (jamais téléchargé sur mobile),
+            pausé hors viewport, skippé sous prefers-reduced-motion. Sur mobile,
+            le navy + les 2 glows CSS ci-dessus suffisent. */}
+        {enableShader && <ShaderAnimation />}
 
         {/* Fallback image si le shader n'est pas disponible et qu'une image existe */}
         {reduced && media.blueTubes && (
@@ -59,6 +71,7 @@ export function Hero({ media }: { media: MediaFlags }) {
               src={MEDIA_PATHS.blueTubes}
               alt=""
               fill
+              sizes="(max-width: 768px) 50vw, 33vw"
               className="object-contain"
               style={{ objectPosition: "center right" }}
             />
