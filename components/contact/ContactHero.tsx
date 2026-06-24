@@ -64,7 +64,7 @@ export function ContactHero({ blueTubes }: { blueTubes: boolean }) {
   }
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-base">
+    <section className="relative min-h-dvh overflow-hidden bg-base">
       {/* Fond — dégradé linéaire DA NaxioWeb */}
       <div
         className="pointer-events-none absolute inset-0"
@@ -134,7 +134,7 @@ export function ContactHero({ blueTubes }: { blueTubes: boolean }) {
       </motion.div>
 
       {/* Contenu */}
-      <div className="relative z-20 mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center px-5 py-24 text-center sm:px-8">
+      <div className="relative z-20 mx-auto flex min-h-dvh max-w-4xl flex-col items-center justify-center px-5 py-24 text-center sm:px-8">
         <motion.h1
           initial={shouldReduceMotion ? false : { opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}

@@ -47,14 +47,18 @@ export function Hero({ media }: { media: MediaFlags }) {
   };
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-[#0B1120]">
+    <section className="relative min-h-dvh w-full overflow-hidden bg-[#0B1120]">
       {/* Fond plein cadre — shader animé ou fallback statique */}
       <div className="absolute inset-0 z-0">
-        {/* Fond navy instantané + glow CSS (affiché toujours, sous le shader) */}
+        {/* Fond navy instantané + glow radial (visible sur mobile sous le contenu,
+            et sous le shader sur desktop). */}
         <div
           aria-hidden="true"
           className="absolute inset-0"
-          style={{ background: "linear-gradient(160deg, #070B18 0%, #0B1120 100%)" }}
+          style={{
+            background:
+              "radial-gradient(ellipse at 70% 50%, rgba(43,124,246,0.18) 0%, #070B18 60%)",
+          }}
         />
         <div className="pointer-events-none absolute -right-32 top-1/4 h-[36rem] w-[36rem] rounded-full bg-[rgba(43,124,246,0.25)] blur-[120px]" />
         <div className="pointer-events-none absolute -right-10 bottom-0 h-[28rem] w-[28rem] rounded-full bg-[rgba(43,124,246,0.25)] blur-[100px]" />
@@ -81,7 +85,7 @@ export function Hero({ media }: { media: MediaFlags }) {
 
       {/* Contenu principal */}
       <div className="relative z-10 mx-auto max-w-7xl px-5 pt-28 sm:px-8 sm:pt-32 lg:pt-36">
-        <div className="grid min-h-[60vh] grid-cols-1 items-end gap-12 lg:grid-cols-2 lg:gap-24">
+        <div className="grid min-h-[60dvh] grid-cols-1 items-center gap-12 text-center lg:grid-cols-2 lg:items-end lg:gap-24 lg:text-left">
           <motion.h1
             initial="hidden"
             animate="show"
@@ -107,14 +111,16 @@ export function Hero({ media }: { media: MediaFlags }) {
               }}
             />
 
-            <p className="max-w-md leading-relaxed text-white/90">{home.hero.subtitle}</p>
+            <p className="mx-auto max-w-md leading-relaxed text-white/90 lg:mx-0">
+              {home.hero.subtitle}
+            </p>
 
-            <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+            <div className="flex w-full flex-col gap-4 sm:flex-row sm:flex-wrap">
               <motion.a
                 href="/assistants-ia"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-3 rounded-full border border-transparent bg-[#1E5FD8] px-6 py-3 font-display text-sm font-medium text-white shadow-glow-sm backdrop-blur-sm transition-colors"
+                className="inline-flex min-h-[52px] w-full items-center justify-center gap-3 rounded-full border border-transparent bg-[#1E5FD8] px-6 py-3 font-display text-sm font-medium text-white shadow-glow-sm transition-colors sm:w-auto"
               >
                 {home.hero.ctaPrimary}
                 <ArrowRight className="size-[1.1em]" aria-hidden="true" />

@@ -1,9 +1,15 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 
 export function ShaderAnimation() {
   const containerRef = useRef<HTMLDivElement>(null);
+  // Composant client-only (chargé en dynamic ssr:false) → `window` est dispo dès
+  // le rendu, donc l'initialiseur paresseux décide sans flash WebGL. Sur mobile,
+  // AUCUN canvas n'est créé : on rend un simple fond en dégradé radial.
+  const [isMobile] = useState(
+    () => typeof window !== "undefined" && window.innerWidth < 768
+  );
   const sceneRef = useRef<{
     camera: THREE.Camera;
     scene: THREE.Scene;
@@ -13,6 +19,7 @@ export function ShaderAnimation() {
   } | null>(null);
 
   useEffect(() => {
+    if (isMobile) return;
     if (!containerRef.current) return;
     const container = containerRef.current;
 
@@ -51,9 +58,9 @@ export function ShaderAnimation() {
     const mesh = new THREE.Mesh(geometry, material);
     scene.add(mesh);
 
-    const isMobile = window.innerWidth < 768;
-    const renderer = new THREE.WebGLRenderer({ antialias: !isMobile });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2));
+    // Ici on est forcément sur desktop (retour anticipé plus haut si isMobile).
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
     const onResize = () => {
@@ -96,7 +103,21 @@ export function ShaderAnimation() {
       geometry.dispose();
       material.dispose();
     };
-  }, []);
+  }, [isMobile]);
+
+  // Mobile : aucun WebGL, juste un dégradé radial bleu sur navy.
+  if (isMobile) {
+    return (
+      <div
+        aria-hidden="true"
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at 70% 50%, rgba(43,124,246,0.18) 0%, #070B18 60%)",
+        }}
+      />
+    );
+  }
 
   return (
     <div

@@ -153,7 +153,7 @@ export function AssistantChat() {
       {/* Halo bleu autour de la fenêtre */}
       <div className="pointer-events-none absolute -inset-5 rounded-[2rem] bg-[radial-gradient(60%_60%_at_50%_25%,rgba(43,124,246,0.35),transparent_70%)] blur-2xl" />
 
-      <div className="relative flex h-[78vh] min-h-[600px] max-h-[860px] flex-col overflow-hidden rounded-3xl border border-[#2B7CF6]/45 bg-[#0E1424] shadow-[0_0_28px_-2px_rgba(77,163,255,0.45),0_30px_80px_-30px_rgba(0,0,0,0.85)] sm:min-h-[680px]">
+      <div className="relative flex h-[calc(100dvh-13rem)] min-h-[440px] flex-col overflow-hidden rounded-3xl border border-[#2B7CF6]/45 bg-[#0E1424] shadow-[0_0_28px_-2px_rgba(77,163,255,0.45),0_30px_80px_-30px_rgba(0,0,0,0.85)] md:h-[78vh] md:min-h-[680px] md:max-h-[860px]">
         {/* En-tête — statut + compteur gratuit */}
         <div className="flex items-center justify-between gap-3 border-b border-white/10 bg-white/[0.03] px-5 py-4">
           <div className="flex items-center gap-2.5">
@@ -222,8 +222,8 @@ export function AssistantChat() {
           <div />
         </div>
 
-        {/* Saisie */}
-        <div className="border-t border-white/10 bg-white/[0.02] p-3">
+        {/* Saisie — padding bas qui respecte la safe-area iOS (home indicator). */}
+        <div className="border-t border-white/10 bg-white/[0.02] px-3 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))]">
           {ended ? (
             <a
               href={waLink}

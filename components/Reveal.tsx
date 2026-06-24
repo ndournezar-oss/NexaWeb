@@ -3,6 +3,7 @@
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import type { ReactNode } from "react";
 import { EASE } from "@/lib/motion";
+import { useIsMobile } from "@/lib/useIsMobile";
 
 type RevealProps = {
   children: ReactNode;
@@ -29,11 +30,23 @@ export function Reveal({
   once = true,
 }: RevealProps) {
   const reduced = useReducedMotion();
+  const isMobile = useIsMobile();
 
+  // Mobile : animations courtes (≤0.3s), translate réduit (16px), délai plafonné
+  // pour éviter les longs staggers. Desktop : reveal premium, lent et eased.
   const variants: Variants = reduced
     ? {
         hidden: { opacity: 0 },
         show: { opacity: 1, transition: { duration: 0.3 } },
+      }
+    : isMobile
+    ? {
+        hidden: { opacity: 0, y: 16 },
+        show: {
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.3, ease: EASE, delay: Math.min(delay, 0.15) },
+        },
       }
     : {
         hidden: { opacity: 0, y },

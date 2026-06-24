@@ -101,6 +101,14 @@
   .text-glow-soft {
     text-shadow: 0 2px 30px rgba(7, 11, 24, 0.6), 0 0 1px rgba(7, 11, 24, 0.4);
   }
+  /* Masque la scrollbar (carousel mobile) tout en gardant le scroll natif. */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @keyframes aura-drift {
@@ -146,6 +154,20 @@
   }
 }
 
+/* Preloader mobile : wordmark NaxioWeb qui respire (fade in/out). */
+.preloader-wordmark {
+  animation: preloader-wordmark 1.4s ease-in-out infinite;
+}
+@keyframes preloader-wordmark {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
 /* Globe « réseau de données » (page Assistants IA) : rotation continue,
    suspendue hors viewport via --globe-play (IntersectionObserver). */
 .globe-spin {
@@ -172,6 +194,38 @@
   50% {
     opacity: 1;
     transform: scale(1.8);
+  }
+}
+
+/* Globe mobile (version CSS/SVG pure, aucun JS) : 2 ellipses qui tournent +
+   point central qui pulse. transform-box: fill-box → rotation autour du centre
+   de l'ellipse SVG. */
+.mglobe-ellipse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: mglobe-spin 8s linear infinite;
+}
+.mglobe-ellipse--rev {
+  animation-direction: reverse;
+  animation-duration: 11s;
+}
+@keyframes mglobe-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.mglobe-dot {
+  animation: mglobe-pulse 2s ease-in-out infinite;
+}
+@keyframes mglobe-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5);
   }
 }
 

@@ -48,7 +48,7 @@ export function Header() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-premium ${
         scrolled || open
-          ? "border-b border-white/10 bg-base/80 backdrop-blur-xl"
+          ? "border-b border-white/10 bg-base/95 md:bg-base/80 md:backdrop-blur-xl"
           : "border-b border-transparent bg-transparent"
       }`}
     >
@@ -107,7 +107,7 @@ export function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.35, ease: EASE }}
-            className="border-t border-white/10 bg-base/95 backdrop-blur-xl md:hidden"
+            className="border-t border-white/10 bg-base md:hidden"
           >
             <nav
               aria-label="Navigation mobile"
@@ -120,7 +120,7 @@ export function Header() {
                     key={item.href}
                     href={item.href}
                     aria-current={active ? "page" : undefined}
-                    className={`rounded-xl px-4 py-3 font-display text-lg font-medium transition-colors ${
+                    className={`flex min-h-[48px] items-center rounded-xl px-4 py-3 font-display text-lg font-medium transition-colors ${
                       active ? "bg-white/5 text-white" : "text-silver hover:text-white"
                     }`}
                   >

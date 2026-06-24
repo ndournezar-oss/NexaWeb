@@ -12,7 +12,7 @@ import { home } from "@/lib/content";
 export function Manifesto() {
   const c = home.manifesto;
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden bg-base py-32">
+    <section className="relative flex min-h-dvh items-center overflow-hidden bg-base py-32">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute left-1/2 top-1/2 h-[40rem] w-[40rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand/10 blur-[160px]"

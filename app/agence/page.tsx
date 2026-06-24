@@ -38,7 +38,7 @@ export default function AgencePage() {
   return (
     <>
       {/* 1 — Intro : déclaration de mission, plein écran, aéré, police fine du héros */}
-      <section className="relative flex min-h-screen items-center overflow-hidden bg-base pt-20">
+      <section className="relative flex min-h-dvh items-center overflow-hidden bg-base pt-20">
         <div className="pointer-events-none absolute -top-24 right-0 h-[40rem] w-[40rem] rounded-full bg-brand/15 blur-[140px]" />
         <div className="pointer-events-none absolute inset-0 text-brand-light/60">
           <ZelligePattern opacity={0.05} scale={110} className="h-full w-full" />

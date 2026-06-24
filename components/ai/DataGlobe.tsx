@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useIsMobile } from "@/lib/useIsMobile";
 
 /**
  * Globe « réseau de données » — wireframe sphérique en CSS 3D pur (méridiens +
@@ -26,6 +27,7 @@ export function DataGlobe() {
   const rootRef = useRef<HTMLDivElement>(null);
   const tiltRef = useRef<HTMLDivElement>(null);
   const [parallaxOn, setParallaxOn] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const coarse = window.matchMedia("(pointer: coarse)").matches;
@@ -77,6 +79,54 @@ export function DataGlobe() {
       cancelAnimationFrame(raf);
     };
   }, [parallaxOn]);
+
+  // Mobile : version 100 % CSS/SVG (aucun JS, aucun calcul 3D). Rendu à 100px
+  // pour matcher l'échelle du conteneur de la page (scale-0.8 → ~80px visibles).
+  if (isMobile) {
+    return (
+      <div
+        aria-hidden="true"
+        className="relative mx-auto flex h-[100px] w-[100px] items-center justify-center"
+      >
+        {/* Cercle + glow bleu */}
+        <div
+          className="absolute inset-0 rounded-full"
+          style={{
+            border: "1px solid rgba(43,124,246,0.6)",
+            boxShadow: "0 0 20px rgba(43,124,246,0.3)",
+          }}
+        />
+        {/* 2 ellipses en rotation CSS */}
+        <svg viewBox="0 0 100 100" className="h-full w-full">
+          <ellipse
+            cx="50"
+            cy="50"
+            rx="48"
+            ry="20"
+            fill="none"
+            stroke="rgba(43,124,246,0.55)"
+            strokeWidth="1"
+            className="mglobe-ellipse"
+          />
+          <ellipse
+            cx="50"
+            cy="50"
+            rx="20"
+            ry="48"
+            fill="none"
+            stroke="rgba(94,160,255,0.45)"
+            strokeWidth="1"
+            className="mglobe-ellipse mglobe-ellipse--rev"
+          />
+        </svg>
+        {/* Point central pulsant */}
+        <span
+          className="mglobe-dot absolute h-2 w-2 rounded-full bg-white"
+          style={{ boxShadow: "0 0 8px 2px rgba(94,160,255,0.85)" }}
+        />
+      </div>
+    );
+  }
 
   return (
     <div

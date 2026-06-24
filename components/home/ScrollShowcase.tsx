@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import {
   AnimatePresence,
@@ -269,12 +269,20 @@ export function ScrollShowcase() {
     setActive((prev) => (prev === idx ? prev : idx));
   });
 
-  // Autoplay des maquettes sur mobile (device statique → elles défilent seules).
-  useEffect(() => {
-    if (scrollDriven || reduced) return undefined;
-    const id = setInterval(() => setActive((i) => (i + 1) % MOCKUPS.length), 2000);
-    return () => clearInterval(id);
-  }, [scrollDriven, reduced]);
+  // Carousel mobile : l'index actif (pour les puces) est déduit de la position
+  // de scroll horizontale. Aucune animation lourde — juste un scroll natif snap.
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [carouselIndex, setCarouselIndex] = useState(0);
+  const onCarouselScroll = () => {
+    const el = carouselRef.current;
+    if (!el) return;
+    const idx = Math.round(el.scrollLeft / el.clientWidth);
+    setCarouselIndex((p) => (p === idx ? p : Math.min(Math.max(idx, 0), MOCKUPS.length - 1)));
+  };
+  const scrollToCard = (i: number) => {
+    const el = carouselRef.current;
+    if (el) el.scrollTo({ left: i * el.clientWidth, behavior: "smooth" });
+  };
 
   const rotate = useTransform(scrollYProgress, [0, 1], [20, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], [1.05, 1]);
@@ -286,15 +294,22 @@ export function ScrollShowcase() {
   return (
     <section
       ref={containerRef}
-      className="relative flex h-[50rem] items-center justify-center bg-[#070B18] p-2 md:h-[80rem] md:p-20"
+      className={
+        isMobile
+          ? "relative bg-[#070B18] px-4 py-16"
+          : "relative flex h-[50rem] items-center justify-center bg-[#070B18] p-2 md:h-[80rem] md:p-20"
+      }
     >
-      <div className="relative w-full py-10 md:py-40" style={{ perspective: "1000px" }}>
+      <div
+        className={isMobile ? "w-full" : "relative w-full py-10 md:py-40"}
+        style={isMobile ? undefined : { perspective: "1000px" }}
+      >
         {/* Titre */}
         <motion.div
           style={scrollDriven ? { translateY: translate } : undefined}
           className="mx-auto mb-8 max-w-5xl text-center"
         >
-          <h2 className="font-hero text-4xl font-bold leading-tight text-white md:text-6xl">
+          <h2 className="font-hero text-3xl font-bold leading-tight text-white sm:text-4xl md:text-6xl">
             Les meilleurs sites du monde ont un point commun.
           </h2>
           <p className="mt-4 text-[#9AA6B8]">
@@ -302,57 +317,94 @@ export function ScrollShowcase() {
           </p>
         </motion.div>
 
-        {/* Device — 3D au scroll sur desktop ; statique + fade-in sur mobile/reduced */}
-        <motion.div
-          style={
-            scrollDriven
-              ? {
-                  rotateX: rotate,
-                  scale,
-                  boxShadow:
-                    "0 0 60px rgba(43,124,246,0.15), 0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px #00000042, 0 84px 50px #00000026, 0 149px 60px #0000000a, 0 233px 65px #00000003",
-                }
-              : { boxShadow: "0 0 60px rgba(43,124,246,0.15), 0 9px 20px #0000004a" }
-          }
-          {...(scrollDriven || reduced
-            ? {}
-            : {
-                initial: { opacity: 0 },
-                whileInView: { opacity: 1 },
-                viewport: { once: true, margin: "0px 0px -10% 0px" },
-                transition: { duration: 0.5 },
-              })}
-          className="mx-auto -mt-12 h-[26rem] w-full max-w-5xl rounded-[30px] border-4 border-[#1E3A6E] bg-[#0B1120] p-2 shadow-2xl md:h-[40rem] md:p-6"
-        >
-          <div className="relative h-full w-full overflow-hidden rounded-2xl bg-gray-100 dark:bg-zinc-900 md:rounded-2xl">
-            {reduced ? (
-              <WebsiteMockup1 />
-            ) : (
-              <AnimatePresence>
-                <motion.div
-                  key={active}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="absolute inset-0"
-                >
-                  <Active />
-                </motion.div>
-              </AnimatePresence>
-            )}
-
-            {/* Nom du site — change avec la maquette */}
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/65 to-transparent px-4 py-3 text-center">
-              <span className="font-display text-xs font-medium uppercase tracking-[0.18em] text-white/90 md:text-sm">
-                {NAMES[shownIndex]}
-              </span>
+        {isMobile ? (
+          /* Mobile : carousel horizontal swipeable (snap) + indicateurs. Zéro
+             scroll-3D, zéro WebGL — juste un overflow-x natif. */
+          <div className="mx-auto max-w-md">
+            <div
+              ref={carouselRef}
+              onScroll={onCarouselScroll}
+              className="no-scrollbar flex snap-x snap-mandatory overflow-x-auto"
+            >
+              {MOCKUPS.map((M, i) => (
+                <div key={i} className="w-full shrink-0 snap-center px-1">
+                  <div className="h-[280px] w-full overflow-hidden rounded-2xl border border-[#1E3A6E] bg-[#0B1120] shadow-[0_0_30px_-10px_rgba(43,124,246,0.5)]">
+                    <M />
+                  </div>
+                  <p className="mt-3 text-center font-display text-xs font-medium uppercase tracking-[0.18em] text-white/80">
+                    {NAMES[i]}
+                  </p>
+                </div>
+              ))}
+            </div>
+            {/* Indicateurs de position */}
+            <div className="mt-5 flex justify-center gap-2">
+              {MOCKUPS.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => scrollToCard(i)}
+                  aria-label={`Voir ${NAMES[i]}`}
+                  className={`h-2 rounded-full transition-all ${
+                    carouselIndex === i ? "w-6 bg-brand-light" : "w-2 bg-white/25"
+                  }`}
+                />
+              ))}
             </div>
           </div>
-        </motion.div>
+        ) : (
+          /* Desktop : device 3D piloté par le scroll (logique d'origine) */
+          <motion.div
+            style={
+              scrollDriven
+                ? {
+                    rotateX: rotate,
+                    scale,
+                    boxShadow:
+                      "0 0 60px rgba(43,124,246,0.15), 0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px #00000042, 0 84px 50px #00000026, 0 149px 60px #0000000a, 0 233px 65px #00000003",
+                  }
+                : { boxShadow: "0 0 60px rgba(43,124,246,0.15), 0 9px 20px #0000004a" }
+            }
+            {...(scrollDriven || reduced
+              ? {}
+              : {
+                  initial: { opacity: 0 },
+                  whileInView: { opacity: 1 },
+                  viewport: { once: true, margin: "0px 0px -10% 0px" },
+                  transition: { duration: 0.5 },
+                })}
+            className="mx-auto -mt-12 h-[26rem] w-full max-w-5xl rounded-[30px] border-4 border-[#1E3A6E] bg-[#0B1120] p-2 shadow-2xl md:h-[40rem] md:p-6"
+          >
+            <div className="relative h-full w-full overflow-hidden rounded-2xl bg-gray-100 dark:bg-zinc-900 md:rounded-2xl">
+              {reduced ? (
+                <WebsiteMockup1 />
+              ) : (
+                <AnimatePresence>
+                  <motion.div
+                    key={active}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute inset-0"
+                  >
+                    <Active />
+                  </motion.div>
+                </AnimatePresence>
+              )}
+
+              {/* Nom du site — change avec la maquette */}
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/65 to-transparent px-4 py-3 text-center">
+                <span className="font-display text-xs font-medium uppercase tracking-[0.18em] text-white/90 md:text-sm">
+                  {NAMES[shownIndex]}
+                </span>
+              </div>
+            </div>
+          </motion.div>
+        )}
 
         {/* CTA + crédit */}
-        <div className="mx-auto mb-10 mt-20 max-w-5xl px-4 text-center">
+        <div className="mx-auto mb-10 mt-12 max-w-5xl px-4 text-center md:mt-20">
           <p className="mb-6 text-xs font-light italic text-[#9AA6B8]/70 md:text-sm">
             Inspirations visuelles — ces designs appartiennent à leurs créateurs respectifs.
             <br className="hidden md:block" />

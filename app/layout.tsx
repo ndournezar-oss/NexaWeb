@@ -110,7 +110,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="anonymous" />
         <link rel="stylesheet" href={FONTSHARE_HREF} />
       </head>
-      <body className="min-h-screen bg-base font-body antialiased">
+      <body className="min-h-dvh bg-base font-body antialiased">
         <JsonLd data={organizationJsonLd()} />
         <JsonLd data={websiteJsonLd()} />
         <SmoothScroll />
