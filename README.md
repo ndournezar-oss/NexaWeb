@@ -1,6 +1,6 @@
-# NexaWeb — site vitrine premium
+# NaxioWeb — site vitrine premium
 
-Site vitrine de l'agence **NexaWeb** (Casablanca) : expérience scroll immersive en
+Site vitrine de l'agence **NaxioWeb** (Casablanca) : expérience scroll immersive en
 5 actes (Three.js), 3 pages, ultra-référencé, conçu comme preuve vivante du niveau
 de l'agence.
 

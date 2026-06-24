@@ -65,7 +65,7 @@ export function ContactHero({ blueTubes }: { blueTubes: boolean }) {
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-base">
-      {/* Fond — dégradé linéaire DA NexaWeb */}
+      {/* Fond — dégradé linéaire DA NaxioWeb */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{

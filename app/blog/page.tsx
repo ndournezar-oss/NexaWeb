@@ -8,9 +8,9 @@ import { blogPosts } from "@/lib/blog";
 
 export const metadata: Metadata = pageMetadata({
   title: "Blog",
-  fullTitle: "Blog | Conseils sites web & IA pour entreprises marocaines — NexaWeb",
+  fullTitle: "Blog | Conseils sites web & IA pour entreprises marocaines — NaxioWeb",
   description:
-    "Conseils, chiffres et bonnes pratiques pour les entreprises marocaines : sites web, prix, refonte, e-commerce et assistants IA. Le blog de l'agence NexaWeb.",
+    "Conseils, chiffres et bonnes pratiques pour les entreprises marocaines : sites web, prix, refonte, e-commerce et assistants IA. Le blog de l'agence NaxioWeb.",
   path: "/blog",
   keywords: ["blog agence web Maroc", "conseils site web Maroc", "chatbot IA Maroc"],
 });
@@ -30,7 +30,7 @@ export default function BlogIndexPage() {
       <div className="relative mx-auto max-w-container px-5 sm:px-8">
         <Reveal>
           <p className="font-display text-sm font-semibold uppercase tracking-[0.25em] text-brand-light">
-            Le blog NexaWeb
+            Le blog NaxioWeb
           </p>
           <h1 className="mt-4 max-w-3xl font-display text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-6xl">
             Sites web & IA, expliqués simplement.

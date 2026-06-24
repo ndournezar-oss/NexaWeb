@@ -7,7 +7,7 @@ type PageMetaInput = {
   /** Chemin relatif, ex: "/agence". "/" pour l'accueil. */
   path: string;
   keywords?: string[];
-  /** <title> exact (sans suffixe auto " · NexaWeb"), pour un contrôle SEO précis. */
+  /** <title> exact (sans suffixe auto " · NaxioWeb"), pour un contrôle SEO précis. */
   fullTitle?: string;
 };
 
@@ -99,7 +99,7 @@ export function organizationJsonLd() {
     slogan: siteConfig.tagline,
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Services NexaWeb",
+      name: "Services NaxioWeb",
       itemListElement: [
         {
           "@type": "Offer",

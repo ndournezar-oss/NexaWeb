@@ -247,7 +247,7 @@ function indexFromProgress(p: number): number {
  * Showcase scroll — device 3D incliné qui se redresse au scroll (logique
  * d'origine conservée : rotateX + scale + translate sur scrollYProgress) et
  * fait défiler 6 maquettes de sites de référence en crossfade. Adapté à la DA
- * NexaWeb (navy + glow bleu). prefers-reduced-motion → device statique, pas
+ * NaxioWeb (navy + glow bleu). prefers-reduced-motion → device statique, pas
  * d'animation scroll, première maquette figée.
  */
 export function ScrollShowcase() {
@@ -341,7 +341,7 @@ export function ScrollShowcase() {
           <p className="mb-6 text-xs font-light italic text-[#9AA6B8]/70 md:text-sm">
             Inspirations visuelles — ces designs appartiennent à leurs créateurs respectifs.
             <br className="hidden md:block" />
-            Vous voulez un site de ce niveau ? NexaWeb le construit pour vous.
+            Vous voulez un site de ce niveau ? NaxioWeb le construit pour vous.
           </p>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a

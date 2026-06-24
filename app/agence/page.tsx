@@ -13,15 +13,15 @@ import { agence } from "@/lib/content";
 
 export const metadata: Metadata = pageMetadata({
   title: "L'agence",
-  fullTitle: "NexaWeb — Agence de création de sites web à Casablanca",
+  fullTitle: "NaxioWeb — Agence de création de sites web à Casablanca",
   description:
-    "NexaWeb, agence de création de sites web à Casablanca : une jeune équipe marocaine d'experts web et IA, avec une mission — hisser les entreprises marocaines au niveau des meilleurs studios du monde, à prix juste.",
+    "NaxioWeb, agence de création de sites web à Casablanca : une jeune équipe marocaine d'experts web et IA, avec une mission — hisser les entreprises marocaines au niveau des meilleurs studios du monde, à prix juste.",
   path: "/agence",
   keywords: [
     "agence de création de sites web Casablanca",
     "agence web premium Maroc",
     "studio digital Casablanca",
-    "à propos NexaWeb",
+    "à propos NaxioWeb",
   ],
 });
 
@@ -208,8 +208,8 @@ export default function AgencePage() {
                 items={agence.market.comparison.classic.items}
               />
               <ComparisonCard
-                label={agence.market.comparison.nexaweb.label}
-                items={agence.market.comparison.nexaweb.items}
+                label={agence.market.comparison.naxioweb.label}
+                items={agence.market.comparison.naxioweb.items}
                 highlighted
               />
             </div>

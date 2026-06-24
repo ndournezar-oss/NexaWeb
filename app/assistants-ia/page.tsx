@@ -12,9 +12,9 @@ import { assistantsIA } from "@/lib/content";
 
 export const metadata: Metadata = pageMetadata({
   title: "Assistants IA",
-  fullTitle: "Assistants IA pour sites web | NexaWeb Maroc",
+  fullTitle: "Assistants IA pour sites web | NaxioWeb Maroc",
   description:
-    "NexaWeb intègre des assistants IA à votre site web : qualification de prospects, support 24/7, FAQ intelligente et prise de rendez-vous. Agence chatbot IA à Casablanca, au service des entreprises au Maroc.",
+    "NaxioWeb intègre des assistants IA à votre site web : qualification de prospects, support 24/7, FAQ intelligente et prise de rendez-vous. Agence chatbot IA à Casablanca, au service des entreprises au Maroc.",
   path: "/assistants-ia",
   keywords: [
     "agence chatbot IA Maroc",

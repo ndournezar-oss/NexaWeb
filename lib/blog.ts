@@ -81,7 +81,7 @@ const RAW_POSTS: BlogPostInput[] = [
       { type: "h2", text: "Un site premium n'est plus réservé aux grandes entreprises" },
       {
         type: "p",
-        text: "Pendant longtemps, avoir un site web vraiment soigné était perçu comme un investissement réservé aux grands groupes, avec des budgets et des délais qui décourageaient les PME. Cette époque est révolue. Des agences jeunes et spécialisées — c'est notre cas chez NexaWeb — proposent aujourd'hui la qualité de finition des grandes structures, sans leur lourdeur ni leur facture, avec des délais de quelques semaines plutôt que plusieurs mois. Le vrai frein aujourd'hui n'est plus le budget : c'est le retard pris à se lancer pendant que d'autres avancent.",
+        text: "Pendant longtemps, avoir un site web vraiment soigné était perçu comme un investissement réservé aux grands groupes, avec des budgets et des délais qui décourageaient les PME. Cette époque est révolue. Des agences jeunes et spécialisées — c'est notre cas chez NaxioWeb — proposent aujourd'hui la qualité de finition des grandes structures, sans leur lourdeur ni leur facture, avec des délais de quelques semaines plutôt que plusieurs mois. Le vrai frein aujourd'hui n'est plus le budget : c'est le retard pris à se lancer pendant que d'autres avancent.",
       },
       { type: "h2", text: "Ce qu'un bon site change concrètement" },
       {
@@ -96,7 +96,7 @@ const RAW_POSTS: BlogPostInput[] = [
       { type: "h2", text: "Conclusion : le bon moment, c'est maintenant" },
       {
         type: "p",
-        text: "Le Maroc digital n'est plus une promesse, c'est une réalité installée. La question n'est plus de savoir si vos clients sont en ligne — ils y sont déjà, à 92%. La vraie question est de savoir si vous y êtes aussi, et si ce que vous leur montrez donne envie de vous faire confiance. Chez NexaWeb, on conçoit des sites premium, pensés pour convertir, avec la possibilité d'y intégrer un assistant IA qui qualifie vos prospects pendant que vous travaillez.",
+        text: "Le Maroc digital n'est plus une promesse, c'est une réalité installée. La question n'est plus de savoir si vos clients sont en ligne — ils y sont déjà, à 92%. La vraie question est de savoir si vous y êtes aussi, et si ce que vous leur montrez donne envie de vous faire confiance. Chez NaxioWeb, on conçoit des sites premium, pensés pour convertir, avec la possibilité d'y intégrer un assistant IA qui qualifie vos prospects pendant que vous travaillez.",
       },
     ],
   },
@@ -156,10 +156,10 @@ const RAW_POSTS: BlogPostInput[] = [
         type: "p",
         text: "Un site web n'est pas une dépense ponctuelle à minimiser, c'est un actif qui travaille pour vous dans la durée — un commercial qui ne dort jamais, qui peut qualifier vos prospects via un assistant IA, et qui continue à rapporter des mois, voire des années après sa mise en ligne. Comparé au coût d'acquisition d'un seul client mal qualifié par d'autres canaux, un site bien construit se rentabilise généralement très vite. La bonne question n'est donc pas « combien ça coûte », mais « combien ça me rapporte si c'est bien fait ».",
       },
-      { type: "h2", text: "Notre approche chez NexaWeb : la transparence" },
+      { type: "h2", text: "Notre approche chez NaxioWeb : la transparence" },
       {
         type: "p",
-        text: "Chez NexaWeb, on ne donne pas de prix en ligne pour une raison simple : on refuse de vous vendre un forfait générique qui ne correspond pas à votre projet réel. À la place, on propose un premier échange gratuit et sans engagement, pendant lequel on comprend vos besoins, votre secteur et vos objectifs, avant de vous proposer un devis clair et sur-mesure. Notre positionnement : la qualité de finition d'une grande agence, portée par une structure jeune et légère — donc sans la facture qui va avec une grosse structure.",
+        text: "Chez NaxioWeb, on ne donne pas de prix en ligne pour une raison simple : on refuse de vous vendre un forfait générique qui ne correspond pas à votre projet réel. À la place, on propose un premier échange gratuit et sans engagement, pendant lequel on comprend vos besoins, votre secteur et vos objectifs, avant de vous proposer un devis clair et sur-mesure. Notre positionnement : la qualité de finition d'une grande agence, portée par une structure jeune et légère — donc sans la facture qui va avec une grosse structure.",
       },
       { type: "h2", text: "Conclusion" },
       {
@@ -227,7 +227,7 @@ const RAW_POSTS: BlogPostInput[] = [
       { type: "h2", text: "Pourquoi si peu d'agences le proposent au Maroc" },
       {
         type: "p",
-        text: "Intégrer un assistant IA qui fonctionne réellement — et pas un widget générique mal configuré — demande une compétence technique spécifique, à la croisée du développement web et de l'intelligence artificielle. C'est précisément le créneau de NexaWeb : une équipe qui a grandi avec ces outils, pour qui l'IA n'est pas une option ajoutée après coup, mais une compétence centrale au même titre que le design.",
+        text: "Intégrer un assistant IA qui fonctionne réellement — et pas un widget générique mal configuré — demande une compétence technique spécifique, à la croisée du développement web et de l'intelligence artificielle. C'est précisément le créneau de NaxioWeb : une équipe qui a grandi avec ces outils, pour qui l'IA n'est pas une option ajoutée après coup, mais une compétence centrale au même titre que le design.",
       },
       { type: "h2", text: "Testez-le vous-même" },
       {
@@ -304,7 +304,7 @@ const RAW_POSTS: BlogPostInput[] = [
       { type: "h2", text: "Conclusion" },
       {
         type: "p",
-        text: "Un site daté coûte plus cher qu'une refonte : il coûte les clients que vous ne voyez jamais, ceux qui sont passés par votre site avant d'aller voir ailleurs. Chez NexaWeb, on transforme des sites datés en vitrines premium pensées pour convertir.",
+        text: "Un site daté coûte plus cher qu'une refonte : il coûte les clients que vous ne voyez jamais, ceux qui sont passés par votre site avant d'aller voir ailleurs. Chez NaxioWeb, on transforme des sites datés en vitrines premium pensées pour convertir.",
       },
     ],
   },

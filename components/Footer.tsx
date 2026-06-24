@@ -22,7 +22,7 @@ export function Footer() {
               href="/"
               className="rounded-md font-hero text-2xl font-bold tracking-[-0.03em] text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-light focus-visible:ring-offset-2 focus-visible:ring-offset-base"
             >
-              Nexa
+              Naxio
               <span className="bg-gradient-to-r from-[#2B7CF6] to-[#5EA0FF] bg-clip-text text-transparent">
                 Web
               </span>

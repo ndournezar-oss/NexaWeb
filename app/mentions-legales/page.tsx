@@ -5,7 +5,7 @@ import { mailtoLink, siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Mentions légales",
-  description: "Mentions légales de NexaWeb : éditeur du site, hébergement, propriété intellectuelle et responsabilité.",
+  description: "Mentions légales de NaxioWeb : éditeur du site, hébergement, propriété intellectuelle et responsabilité.",
   path: "/mentions-legales",
 });
 

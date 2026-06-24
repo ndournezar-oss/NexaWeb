@@ -17,11 +17,11 @@ export const home = {
     title: "Un assistant IA, intégré à votre site.",
     subtitle:
       "Celui-ci est réel. Il qualifie les demandes, répond 24/7 et bascule les clients décidés sur WhatsApp. Le même, on peut l'intégrer au vôtre.",
-    status: "ASSISTANT NEXAWEB — EN LIGNE",
+    status: "ASSISTANT NAXIOWEB — EN LIGNE",
     freeSuffix: "messages gratuits",
     ctaLabel: "Tester notre assistant IA",
     intro:
-      "Bonjour 👋 Je suis l'assistant IA de NexaWeb — le genre d'assistant qu'on peut intégrer à votre site. Dites-moi votre secteur ou votre projet, et je vous montre ce que je sais faire.",
+      "Bonjour 👋 Je suis l'assistant IA de NaxioWeb — le genre d'assistant qu'on peut intégrer à votre site. Dites-moi votre secteur ou votre projet, et je vous montre ce que je sais faire.",
     placeholder: "Votre secteur ou votre projet…",
     send: "Envoyer",
     conversionTitle: "Envie d'un assistant comme celui-ci sur votre site ?",
@@ -29,7 +29,7 @@ export const home = {
       "On l'intègre à votre site (ou en page autonome) : qualification de prospects, support 24/7, prise de RDV.",
     conversionCta: "Parlons-en sur WhatsApp",
     whatsappMessage:
-      "Bonjour NexaWeb, j'ai testé votre assistant IA et je veux un assistant comme celui-ci sur mon site.",
+      "Bonjour NaxioWeb, j'ai testé votre assistant IA et je veux un assistant comme celui-ci sur mon site.",
     errorFallback:
       "Je suis très sollicité là 🙂 Pour ne pas vous faire attendre, écrivons-nous directement sur WhatsApp →",
   },
@@ -101,7 +101,7 @@ export const home = {
     paragraph:
       "Le Maroc est massivement en ligne, mais presque aucune entreprise n'est vraiment équipée. C'est votre fenêtre.",
     cta: "Discuter de mon projet",
-    whatsappMessage: "Bonjour NexaWeb, je veux discuter de mon projet de site web.",
+    whatsappMessage: "Bonjour NaxioWeb, je veux discuter de mon projet de site web.",
     stats: [
       { value: 92, prefix: "", suffix: "%", display: null, label: "de Marocains connectés" },
       { value: 78, prefix: "", suffix: "%", display: null, label: "recherchent en ligne avant d'acheter" },
@@ -116,7 +116,7 @@ export const home = {
     subtitle: "Et si la réponse ne s'y trouve pas, écrivez-nous directement sur WhatsApp.",
     items: [
       {
-        question: "Combien coûte un site avec NexaWeb ?",
+        question: "Combien coûte un site avec NaxioWeb ?",
         answer:
           "Chaque projet est différent — site vitrine, e-commerce, avec ou sans assistant IA — donc le tarif se fait toujours sur devis, après un premier échange gratuit et sans engagement. Notre positionnement est simple : la qualité de finition d'une grande agence, sans la facture qui va avec, parce qu'on est une structure jeune et légère.",
       },
@@ -131,14 +131,14 @@ export const home = {
           "C'est un assistant qui vit sur votre site et répond à vos visiteurs 24 heures sur 24, 7 jours sur 7. Il qualifie vos prospects en posant les bonnes questions, répond aux questions fréquentes à votre place, et bascule les clients réellement décidés vers vous sur WhatsApp. Le plus simple, c'est de le tester directement : on a une démo fonctionnelle sur la page Assistants IA du site.",
       },
       {
-        question: "Pourquoi NexaWeb plutôt qu'une agence classique ?",
+        question: "Pourquoi NaxioWeb plutôt qu'une agence classique ?",
         answer:
           "Parce qu'on combine deux choses que presque aucune agence ne propose ensemble au Maroc : un design haut de gamme ET des assistants IA réellement intégrés, pas juste un widget de chat générique. On est une équipe jeune, qui a grandi avec ces outils — l'IA est notre langue maternelle, pas une option qu'on rajoute après coup. Et tout ça à un prix juste, sans la lourdeur d'une grande structure.",
       },
       {
         question: "Le référencement (SEO) est-il inclus ?",
         answer:
-          "Oui. Chaque site livré par NexaWeb part avec les bases techniques du référencement déjà en place : structure sémantique propre, performance optimisée, métadonnées soignées page par page. Ce n'est pas une option qu'on facture à part, c'est notre standard de livraison.",
+          "Oui. Chaque site livré par NaxioWeb part avec les bases techniques du référencement déjà en place : structure sémantique propre, performance optimisée, métadonnées soignées page par page. Ce n'est pas une option qu'on facture à part, c'est notre standard de livraison.",
       },
       {
         question: "Gérez-vous l'hébergement et la maintenance ?",
@@ -170,7 +170,7 @@ export const assistantsIA = {
   kicker: "Assistants IA",
   h1: "Votre site mérite un assistant qui ne dort jamais.",
   intro:
-    "NexaWeb intègre des assistants IA à votre site — ou en page autonome — pour qualifier vos prospects, répondre 24/7 et faire gagner du temps à vos équipes. C'est notre différenciateur, et quasiment aucune agence au Maroc ne le propose.",
+    "NaxioWeb intègre des assistants IA à votre site — ou en page autonome — pour qualifier vos prospects, répondre 24/7 et faire gagner du temps à vos équipes. C'est notre différenciateur, et quasiment aucune agence au Maroc ne le propose.",
   ctaPrimary: "Tester l'assistant en direct",
   ctaSecondary: "Discuter sur WhatsApp",
   offer: {
@@ -214,7 +214,7 @@ export const agence = {
     kicker: "L'agence",
     h1: "On est jeunes, marocains, et on construit comme les meilleurs studios du monde.",
     subtitle:
-      "NexaWeb est née d'un constat simple : au Maroc, la plupart des entreprises n'ont pas un site à la hauteur de ce qu'elles valent. On est là pour changer ça.",
+      "NaxioWeb est née d'un constat simple : au Maroc, la plupart des entreprises n'ont pas un site à la hauteur de ce qu'elles valent. On est là pour changer ça.",
   },
   story: {
     kicker: "Notre histoire",
@@ -236,7 +236,7 @@ export const agence = {
   },
   difference: {
     kicker: "Notre différence",
-    title: "Pourquoi NexaWeb, et pas une agence classique.",
+    title: "Pourquoi NaxioWeb, et pas une agence classique.",
     pillars: [
       {
         title: "La qualité, d'abord.",
@@ -269,10 +269,10 @@ export const agence = {
     ],
     source: "Digital 2025 · ANRT · HCP",
     comparison: {
-      title: "Agence classique vs NexaWeb",
+      title: "Agence classique vs NaxioWeb",
       classic: { label: "Agence classique", items: ["Design", "Un site, livré… puis oublié"] },
-      nexaweb: {
-        label: "NexaWeb",
+      naxioweb: {
+        label: "NaxioWeb",
         items: ["Design + intelligence artificielle", "Un site qui qualifie et répond, seul, 24/7"],
       },
     },

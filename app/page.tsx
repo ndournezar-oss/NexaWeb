@@ -8,7 +8,7 @@ import { home } from "@/lib/content";
 export const metadata: Metadata = pageMetadata({
   title: "Accueil",
   description:
-    "NexaWeb, agence web à Casablanca spécialisée en création de sites web premium et assistants IA intégrés. Testez notre assistant IA en direct. Design, intelligence et conversion mesurable pour les entreprises au Maroc.",
+    "NaxioWeb, agence web à Casablanca spécialisée en création de sites web premium et assistants IA intégrés. Testez notre assistant IA en direct. Design, intelligence et conversion mesurable pour les entreprises au Maroc.",
   path: "/",
   keywords: [
     "agence web Casablanca",

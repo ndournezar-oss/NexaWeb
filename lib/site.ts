@@ -17,8 +17,8 @@ const WHATSAPP_NUMBER = (process.env.NEXT_PUBLIC_WHATSAPP ?? "212701200902").rep
 const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "ndour.nezar@gmail.com";
 
 export const siteConfig = {
-  name: "NexaWeb",
-  legalName: "NexaWeb",
+  name: "NaxioWeb",
+  legalName: "NaxioWeb",
   tagline: "Agence web premium & assistants IA à Casablanca",
   description:
     "Agence web premium au Maroc : sites haut de gamme et assistants IA intégrés. Design, intelligence et conversion mesurable pour les entreprises qui visent le niveau international.",
@@ -71,4 +71,4 @@ export function mailtoLink(subject?: string, body?: string): string {
 }
 
 export const defaultWhatsappMessage =
-  "Bonjour NexaWeb, je souhaite discuter d'un projet de site web.";
+  "Bonjour NaxioWeb, je souhaite discuter d'un projet de site web.";

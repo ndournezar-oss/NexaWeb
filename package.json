@@ -1,8 +1,8 @@
 {
-  "name": "nexaweb",
+  "name": "naxioweb",
   "version": "1.0.0",
   "private": true,
-  "description": "NexaWeb — agence de création web premium à Casablanca",
+  "description": "NaxioWeb — agence de création web premium à Casablanca",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

@@ -115,7 +115,7 @@ export async function POST(request: Request) {
       .send({
         from: `${siteConfig.name} <${from}>`,
         to: [email],
-        subject: "On a bien reçu votre message — NexaWeb",
+        subject: "On a bien reçu votre message — NaxioWeb",
         html: `<p>Bonjour ${safe.name},</p>
           <p>Merci pour votre message — on revient vers vous sous 24 à 48&nbsp;h ouvrées. Pour une réponse immédiate, écrivez-nous sur WhatsApp&nbsp;: ${siteConfig.whatsappDisplay}.</p>
           <p>— L'équipe ${siteConfig.name}, ${siteConfig.city}</p>`,

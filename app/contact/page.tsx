@@ -12,7 +12,7 @@ import { defaultWhatsappMessage, mailtoLink, siteConfig, whatsappLink } from "@/
 export const metadata: Metadata = pageMetadata({
   title: "Contact",
   description:
-    "Contactez NexaWeb, agence web premium à Casablanca. WhatsApp, téléphone ou e-mail : discutons de votre projet de création ou de refonte de site web.",
+    "Contactez NaxioWeb, agence web premium à Casablanca. WhatsApp, téléphone ou e-mail : discutons de votre projet de création ou de refonte de site web.",
   path: "/contact",
   keywords: ["contact agence web Casablanca", "devis site web Maroc"],
 });

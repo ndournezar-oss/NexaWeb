@@ -19,7 +19,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   if (!post) return {};
   return pageMetadata({
     title: post.title,
-    fullTitle: `${post.title} | Blog NexaWeb`,
+    fullTitle: `${post.title} | Blog NaxioWeb`,
     description: post.description,
     path: `/blog/${post.slug}`,
     keywords: [post.keyword],

@@ -6,7 +6,7 @@ import { mailtoLink, siteConfig } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: "Politique de confidentialité",
   description:
-    "Politique de confidentialité de NexaWeb : données collectées via le formulaire de contact et l'assistant IA, finalités, durée de conservation et vos droits.",
+    "Politique de confidentialité de NaxioWeb : données collectées via le formulaire de contact et l'assistant IA, finalités, durée de conservation et vos droits.",
   path: "/confidentialite",
 });
 

@@ -4,7 +4,7 @@ import { siteConfig } from "@/lib/site";
 // Edge runtime requis : la variante Node de @vercel/og échoue sur les chemins
 // Windows contenant un espace (fileURLToPath sur le font par défaut).
 export const runtime = "edge";
-export const alt = "NexaWeb — Agence de création web premium à Casablanca";
+export const alt = "NaxioWeb — Agence de création web premium à Casablanca";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -28,7 +28,7 @@ export default function OpengraphImage() {
       >
         {/* Marque — wordmark texte uniquement, pas d'icône dessinée à la main */}
         <div style={{ display: "flex", fontSize: "44px", fontWeight: 700, letterSpacing: "-0.03em" }}>
-          <span>Nexa</span>
+          <span>Naxio</span>
           <span style={{ color: "#5EA0FF" }}>Web</span>
         </div>
 
