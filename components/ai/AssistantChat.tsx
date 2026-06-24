@@ -149,11 +149,11 @@ export function AssistantChat() {
   }
 
   return (
-    <div className="relative mx-auto w-full max-w-2xl">
+    <div className="relative mx-auto w-full max-w-3xl">
       {/* Halo bleu autour de la fenêtre */}
       <div className="pointer-events-none absolute -inset-5 rounded-[2rem] bg-[radial-gradient(60%_60%_at_50%_25%,rgba(43,124,246,0.35),transparent_70%)] blur-2xl" />
 
-      <div className="relative flex h-[62vh] flex-col overflow-hidden rounded-3xl border border-[#2B7CF6]/45 bg-[#0E1424] shadow-[0_0_28px_-2px_rgba(77,163,255,0.45),0_30px_80px_-30px_rgba(0,0,0,0.85)] sm:h-[66vh] lg:h-[76vh] lg:max-h-[780px]">
+      <div className="relative flex h-[78vh] min-h-[600px] max-h-[860px] flex-col overflow-hidden rounded-3xl border border-[#2B7CF6]/45 bg-[#0E1424] shadow-[0_0_28px_-2px_rgba(77,163,255,0.45),0_30px_80px_-30px_rgba(0,0,0,0.85)] sm:min-h-[680px]">
         {/* En-tête — statut + compteur gratuit */}
         <div className="flex items-center justify-between gap-3 border-b border-white/10 bg-white/[0.03] px-5 py-4">
           <div className="flex items-center gap-2.5">

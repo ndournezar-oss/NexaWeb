@@ -30,35 +30,27 @@ const USE_CASE_ICONS = [Users, Clock, MessageSquare, CalendarClock];
 export default function AssistantsIaPage() {
   return (
     <>
-      {/* Expérience IA en vedette — globe + chat dominent l'écran, sans pavé de texte */}
-      <section className="relative overflow-hidden bg-base pt-28 pb-14 sm:pt-32">
+      {/* Expérience IA en vedette — colonne verticale centrée : petite boule, grand chat */}
+      <section className="relative overflow-hidden bg-base pb-14 pt-20 sm:pt-28">
         <div className="pointer-events-none absolute -top-24 right-0 h-[36rem] w-[36rem] rounded-full bg-brand/15 blur-[130px]" />
         <div className="pointer-events-none absolute inset-0 text-brand-light/60">
           <ZelligePattern opacity={0.05} scale={110} className="h-full w-full" />
         </div>
-        <div className="relative mx-auto max-w-container px-5 sm:px-8">
-          <div className="grid items-center gap-8 lg:min-h-[85vh] lg:grid-cols-2">
-            {/* Colonne gauche — globe + accroche courte (mobile : globe compact au-dessus) */}
-            <Reveal className="flex flex-col items-center text-center lg:items-start lg:text-left">
-              <div className="flex h-[180px] w-full items-center justify-center lg:h-[320px]">
-                <div className="scale-[1.7] lg:scale-[2.4]">
-                  <DataGlobe />
-                </div>
+        <div className="relative mx-auto flex max-w-container flex-col items-center gap-4 px-5 sm:px-8">
+          {/* Boule décorative, compacte, au-dessus du chat */}
+          <Reveal className="flex items-center justify-center">
+            <div className="flex h-[80px] w-[80px] items-center justify-center sm:h-[120px] sm:w-[120px]">
+              <div className="scale-[0.8] sm:scale-[0.9]">
+                <DataGlobe />
               </div>
-              <p className="mt-2 font-display text-xs font-semibold uppercase tracking-[0.25em] text-brand-light sm:text-sm">
-                {assistantsIA.live.eyebrow}
-              </p>
-              <p className="mt-2 max-w-sm font-display text-base leading-snug text-silver sm:text-lg">
-                {assistantsIA.live.line}
-              </p>
-            </Reveal>
-
-            {/* Colonne droite — la fenêtre de chat, dominante */}
-            <div id="demo-ia" className="w-full">
-              <Reveal delay={0.1} className="w-full">
-                <AssistantChat />
-              </Reveal>
             </div>
+          </Reveal>
+
+          {/* Fenêtre de chat — grande, dominante, centrée */}
+          <div id="demo-ia" className="w-full">
+            <Reveal delay={0.1} className="w-full">
+              <AssistantChat />
+            </Reveal>
           </div>
         </div>
       </section>
