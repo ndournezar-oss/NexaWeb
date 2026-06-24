@@ -111,7 +111,7 @@ export default function AgencePage() {
                     suffix={agence.conviction.statSuffix}
                   />
                 </p>
-                <p className="mt-4 text-sm leading-relaxed text-silver sm:text-base">
+                <p className="mt-4 text-sm leading-relaxed text-[#C8D2E0] sm:text-[1rem]">
                   {agence.conviction.statLabel}
                 </p>
                 <p className="mt-1 text-xs italic text-muted">{agence.conviction.statContext}</p>
@@ -333,7 +333,7 @@ function ComparisonCard({
       </p>
       <ul className="mt-4 space-y-2.5">
         {items.map((item) => (
-          <li key={item} className="break-words text-sm leading-relaxed text-white sm:text-base">
+          <li key={item} className="break-words text-sm leading-relaxed text-[#E8EDF5] sm:text-[1rem]">
             {item}
           </li>
         ))}
