@@ -185,7 +185,7 @@ export function AssistantChat() {
               </UserBubble>
             ) : (
               <AssistantBubble key={i} reduced={!!reduced}>
-                {m.content}
+                <RichText text={m.content} />
               </AssistantBubble>
             )
           )}
@@ -295,7 +295,7 @@ function AssistantBubble({
       <span className="mt-0.5 inline-flex size-7 shrink-0 items-center justify-center rounded-full bg-[#2B7CF6]/15 text-brand-light ring-1 ring-inset ring-[#2B7CF6]/30">
         <Sparkles className="size-3.5" aria-hidden="true" />
       </span>
-      <div className="max-w-[85%] whitespace-pre-wrap rounded-2xl rounded-tl-md border border-[#2B7CF6]/25 bg-[#0B1120] px-4 py-3 text-[0.95rem] leading-relaxed text-silver shadow-[0_0_18px_-8px_rgba(77,163,255,0.55)]">
+      <div className="max-w-[85%] rounded-2xl rounded-tl-md border border-[#2B7CF6]/25 bg-[#0B1120] px-4 py-3 text-[0.95rem] leading-relaxed text-silver shadow-[0_0_18px_-8px_rgba(77,163,255,0.55)]">
         {children}
       </div>
     </motion.div>
@@ -392,11 +392,112 @@ function StreamingBubble({
         <Sparkles className="size-3.5" aria-hidden="true" />
       </span>
       <div className="max-w-[85%] whitespace-pre-wrap rounded-2xl rounded-tl-md border border-[#2B7CF6]/25 bg-[#0B1120] px-4 py-3 text-[0.95rem] leading-relaxed text-silver shadow-[0_0_18px_-8px_rgba(77,163,255,0.55)]">
-        {typed}
+        {renderInline(typed)}
         <span className="ml-0.5 inline-block w-[2px] -translate-y-[1px] animate-pulse bg-brand-light align-middle" style={{ height: "1em" }} aria-hidden="true" />
       </div>
     </div>
   );
+}
+
+/**
+ * Markdown léger des réponses IA → éléments React (jamais d'astérisques bruts).
+ * Pas de dépendance ni de dangerouslySetInnerHTML : React échappe le texte, donc
+ * sûr (XSS), et c'est assez rapide pour tourner à chaque frame du typewriter.
+ * Gère **gras**, __gras__, *italique*, `code`, et les liens [texte](https://…).
+ */
+function renderInline(text: string): React.ReactNode[] {
+  const nodes: React.ReactNode[] = [];
+  const regex =
+    /(\[([^\]]+)\]\((https?:\/\/[^\s)]+)\))|\*\*([^*]+)\*\*|__([^_]+)__|\*([^*\n]+)\*|`([^`]+)`/g;
+  let last = 0;
+  let k = 0;
+  let m: RegExpExecArray | null;
+  while ((m = regex.exec(text)) !== null) {
+    if (m.index > last) nodes.push(text.slice(last, m.index));
+    if (m[1]) {
+      nodes.push(
+        <a
+          key={k++}
+          href={m[3]}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-brand-light underline underline-offset-2 hover:text-brand"
+        >
+          {m[2]}
+        </a>
+      );
+    } else if (m[4] !== undefined) {
+      nodes.push(
+        <strong key={k++} className="font-semibold text-white">
+          {m[4]}
+        </strong>
+      );
+    } else if (m[5] !== undefined) {
+      nodes.push(
+        <strong key={k++} className="font-semibold text-white">
+          {m[5]}
+        </strong>
+      );
+    } else if (m[6] !== undefined) {
+      nodes.push(<em key={k++}>{m[6]}</em>);
+    } else if (m[7] !== undefined) {
+      nodes.push(
+        <code key={k++} className="rounded bg-white/10 px-1 py-0.5 text-[0.85em]">
+          {m[7]}
+        </code>
+      );
+    }
+    last = regex.lastIndex;
+  }
+  if (last < text.length) nodes.push(text.slice(last));
+  return nodes;
+}
+
+/**
+ * Rendu structurel d'une réponse finalisée : paragraphes + listes à puces
+ * (`- ` / `* `), titres `#` aplatis en gras (taille de bulle, jamais énormes).
+ * L'inline (gras/italique/liens) passe par renderInline.
+ */
+function RichText({ text }: { text: string }) {
+  const lines = text.split("\n");
+  const blocks: React.ReactNode[] = [];
+  let bullets: string[] = [];
+  let key = 0;
+
+  const flush = () => {
+    if (bullets.length === 0) return;
+    const items = bullets;
+    blocks.push(
+      <ul key={`ul-${key++}`} className="my-1 list-disc space-y-0.5 pl-4 marker:text-brand-light">
+        {items.map((it, i) => (
+          <li key={i}>{renderInline(it)}</li>
+        ))}
+      </ul>
+    );
+    bullets = [];
+  };
+
+  for (const line of lines) {
+    const bullet = /^\s*[-*]\s+(.*)$/.exec(line);
+    if (bullet) {
+      bullets.push(bullet[1]);
+      continue;
+    }
+    flush();
+    const heading = /^\s*#{1,6}\s+(.*)$/.exec(line);
+    if (heading) {
+      blocks.push(
+        <p key={`h-${key++}`} className="font-semibold text-white">
+          {renderInline(heading[1])}
+        </p>
+      );
+    } else if (line.trim() !== "") {
+      blocks.push(<p key={`p-${key++}`}>{renderInline(line)}</p>);
+    }
+  }
+  flush();
+
+  return <div className="space-y-1.5">{blocks}</div>;
 }
 
 function Dot({ reduced, delay }: { reduced: boolean; delay: number }) {
