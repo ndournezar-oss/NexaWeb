@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Gem, Sparkles, Wallet, type LucideIcon } from "lucide-react";
+import { ArrowRight, Gem, Sparkles, Target, type LucideIcon } from "lucide-react";
 import { AuraBackground } from "@/components/AuraBackground";
 import { Counter } from "@/components/Counter";
 import { MaskReveal } from "@/components/MaskReveal";
@@ -15,7 +15,7 @@ export const metadata: Metadata = pageMetadata({
   title: "L'agence",
   fullTitle: "NaxioWeb — Agence de création de sites web à Casablanca",
   description:
-    "NaxioWeb, agence de création de sites web à Casablanca : une jeune équipe marocaine d'experts web et IA, avec une mission — hisser les entreprises marocaines au niveau des meilleurs studios du monde, à prix juste.",
+    "NaxioWeb, agence de création de sites web à Casablanca : une équipe d'experts marocains en design premium et intelligence artificielle, avec une mission — hisser les entreprises marocaines au niveau des meilleurs studios du monde.",
   path: "/agence",
   keywords: [
     "agence de création de sites web Casablanca",
@@ -28,7 +28,7 @@ export const metadata: Metadata = pageMetadata({
 const PILLAR_ICONS: Record<string, LucideIcon> = {
   "La qualité, d'abord.": Gem,
   "L'intelligence, en plus.": Sparkles,
-  "Un prix juste.": Wallet,
+  "Focalisés sur le résultat.": Target,
 };
 
 export default function AgencePage() {

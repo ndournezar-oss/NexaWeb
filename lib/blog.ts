@@ -81,7 +81,7 @@ const RAW_POSTS: BlogPostInput[] = [
       { type: "h2", text: "Un site premium n'est plus réservé aux grandes entreprises" },
       {
         type: "p",
-        text: "Pendant longtemps, avoir un site web vraiment soigné était perçu comme un investissement réservé aux grands groupes, avec des budgets et des délais qui décourageaient les PME. Cette époque est révolue. Des agences jeunes et spécialisées — c'est notre cas chez NaxioWeb — proposent aujourd'hui la qualité de finition des grandes structures, sans leur lourdeur ni leur facture, avec des délais de quelques semaines plutôt que plusieurs mois. Le vrai frein aujourd'hui n'est plus le budget : c'est le retard pris à se lancer pendant que d'autres avancent.",
+        text: "Pendant longtemps, avoir un site web vraiment soigné était perçu comme un investissement réservé aux grands groupes, avec des budgets et des délais qui décourageaient les PME. Cette époque est révolue. Des agences spécialisées — c'est notre cas chez NaxioWeb — proposent aujourd'hui la qualité de finition des grandes structures, avec l'agilité d'une équipe dédiée et des délais de quelques semaines plutôt que plusieurs mois. Le vrai frein aujourd'hui n'est plus le budget : c'est le retard pris à se lancer pendant que d'autres avancent.",
       },
       { type: "h2", text: "Ce qu'un bon site change concrètement" },
       {
@@ -159,7 +159,7 @@ const RAW_POSTS: BlogPostInput[] = [
       { type: "h2", text: "Notre approche chez NaxioWeb : la transparence" },
       {
         type: "p",
-        text: "Chez NaxioWeb, on ne donne pas de prix en ligne pour une raison simple : on refuse de vous vendre un forfait générique qui ne correspond pas à votre projet réel. À la place, on propose un premier échange gratuit et sans engagement, pendant lequel on comprend vos besoins, votre secteur et vos objectifs, avant de vous proposer un devis clair et sur-mesure. Notre positionnement : la qualité de finition d'une grande agence, portée par une structure jeune et légère — donc sans la facture qui va avec une grosse structure.",
+        text: "Chez NaxioWeb, on ne donne pas de prix en ligne pour une raison simple : on refuse de vous vendre un forfait générique qui ne correspond pas à votre projet réel. À la place, on propose un premier échange gratuit et sans engagement, pendant lequel on comprend vos besoins, votre secteur et vos objectifs, avant de vous proposer un devis clair et sur-mesure. Notre positionnement : la qualité de finition des meilleurs studios, portée par une agence spécialisée et focalisée sur votre résultat.",
       },
       { type: "h2", text: "Conclusion" },
       {
@@ -227,7 +227,7 @@ const RAW_POSTS: BlogPostInput[] = [
       { type: "h2", text: "Pourquoi si peu d'agences le proposent au Maroc" },
       {
         type: "p",
-        text: "Intégrer un assistant IA qui fonctionne réellement — et pas un widget générique mal configuré — demande une compétence technique spécifique, à la croisée du développement web et de l'intelligence artificielle. C'est précisément le créneau de NaxioWeb : une équipe qui a grandi avec ces outils, pour qui l'IA n'est pas une option ajoutée après coup, mais une compétence centrale au même titre que le design.",
+        text: "Intégrer un assistant IA qui fonctionne réellement — et pas un widget générique mal configuré — demande une compétence technique spécifique, à la croisée du développement web et de l'intelligence artificielle. C'est précisément le créneau de NaxioWeb : une équipe d'experts pour qui l'IA n'est pas une option ajoutée après coup, mais une compétence centrale au même titre que le design.",
       },
       { type: "h2", text: "Testez-le vous-même" },
       {

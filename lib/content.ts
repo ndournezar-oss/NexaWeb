@@ -118,7 +118,7 @@ export const home = {
       {
         question: "Combien coûte un site avec NaxioWeb ?",
         answer:
-          "Chaque projet est différent — site vitrine, e-commerce, avec ou sans assistant IA — donc le tarif se fait toujours sur devis, après un premier échange gratuit et sans engagement. Notre positionnement est simple : la qualité de finition d'une grande agence, sans la facture qui va avec, parce qu'on est une structure jeune et légère.",
+          "Chaque projet est différent — site vitrine, e-commerce, avec ou sans assistant IA — donc le tarif se fait toujours sur devis, après un premier échange gratuit et sans engagement. Notre positionnement est simple : la qualité des meilleurs studios, avec l'agilité d'une agence spécialisée focalisée sur votre résultat.",
       },
       {
         question: "En combien de temps mon site est-il livré ?",
@@ -133,7 +133,7 @@ export const home = {
       {
         question: "Pourquoi NaxioWeb plutôt qu'une agence classique ?",
         answer:
-          "Parce qu'on combine deux choses que presque aucune agence ne propose ensemble au Maroc : un design haut de gamme ET des assistants IA réellement intégrés, pas juste un widget de chat générique. On est une équipe jeune, qui a grandi avec ces outils — l'IA est notre langue maternelle, pas une option qu'on rajoute après coup. Et tout ça à un prix juste, sans la lourdeur d'une grande structure.",
+          "Parce qu'on combine deux choses que presque aucune agence ne propose ensemble au Maroc : un design haut de gamme ET des assistants IA réellement intégrés, pas juste un widget de chat générique. Nous sommes une équipe d'experts marocains dont l'expertise associe design premium et intégration d'intelligence artificielle — une compétence centrale, pas une option ajoutée après coup. La qualité des meilleurs studios, avec l'agilité d'une agence spécialisée focalisée sur votre résultat.",
       },
       {
         question: "Le référencement (SEO) est-il inclus ?",
@@ -212,15 +212,15 @@ export const assistantsIA = {
 export const agence = {
   hero: {
     kicker: "L'agence",
-    h1: "On est jeunes, marocains, et on construit comme les meilleurs studios du monde.",
+    h1: "Des experts marocains qui construisent au niveau des meilleurs studios du monde.",
     subtitle:
       "NaxioWeb est née d'un constat simple : au Maroc, la plupart des entreprises n'ont pas un site à la hauteur de ce qu'elles valent. On est là pour changer ça.",
   },
   story: {
     kicker: "Notre histoire",
-    title: "Une nouvelle génération.",
+    title: "L'exigence d'un studio premium.",
     paragraph:
-      "Nous sommes une jeune équipe marocaine, basée à Casablanca, qui a grandi avec le code et l'intelligence artificielle. Là où d'autres voient une contrainte technique, on voit un terrain de jeu. On conçoit des sites premium et des assistants IA que très peu d'agences savent livrer ici — pas parce qu'on a plus de moyens, mais parce que ces outils sont notre langue maternelle.",
+      "Nous sommes une équipe d'experts marocains, basée à Casablanca, spécialisée en design premium et en intelligence artificielle. Notre expertise combine maîtrise technique et compréhension fine du marché local. On conçoit des sites premium et des assistants IA que très peu d'agences savent livrer ici — parce que cette double compétence, design haut de gamme et IA, est précisément notre métier.",
   },
   conviction: {
     kicker: "Notre conviction",
@@ -251,9 +251,9 @@ export const agence = {
         featured: true,
       },
       {
-        title: "Un prix juste.",
+        title: "Focalisés sur le résultat.",
         description:
-          "On est une structure jeune et légère : on livre la qualité des grandes agences, sans leur facture.",
+          "Une agence spécialisée et dédiée : la qualité des meilleurs studios, avec l'agilité d'une équipe concentrée sur vos objectifs.",
         featured: false,
       },
     ],
